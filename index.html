@@ -12,24 +12,38 @@
 
         :root {
             --primary: #ff5e3a;
-            --primary-glow: rgba(255, 94, 58, 0.5);
+            --primary-glow: rgba(255, 94, 58, 0.25);
             --secondary: #7b61ff;
-            --secondary-glow: rgba(123, 97, 255, 0.5);
-            --accent: #ffd93d;
-            --mint: #00f5a0;
-            --mint-glow: rgba(0, 245, 160, 0.5);
+            --secondary-glow: rgba(123, 97, 255, 0.25);
+            --accent: #ffb800;
+            --mint: #00c987;
+            --mint-glow: rgba(0, 201, 135, 0.25);
             --pink: #ff2e88;
-            --bg: #0a0812;
-            --bg-2: #12101f;
-            --surface: rgba(255, 255, 255, 0.04);
-            --surface-2: rgba(255, 255, 255, 0.08);
-            --border: rgba(255, 255, 255, 0.1);
-            --border-hover: rgba(255, 255, 255, 0.25);
-            --text: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.65);
-            --text-muted: rgba(255, 255, 255, 0.4);
+            --sky: #4a90e2;
+
+            /* Fundo claro */
+            --bg: #fafaf7;
+            --bg-2: #f5f3ee;
+            --surface: #ffffff;
+            --surface-2: #fefefe;
+            --surface-3: rgba(255, 255, 255, 0.7);
+            --border: rgba(15, 20, 30, 0.08);
+            --border-2: rgba(15, 20, 30, 0.12);
+            --border-hover: rgba(15, 20, 30, 0.18);
+
+            --text: #0f141e;
+            --text-2: #1f2937;
+            --text-dim: #6b7280;
+            --text-muted: #9ca3af;
+
             --green: #25d366;
             --green-dark: #128c7e;
+
+            --shadow-xs: 0 1px 2px rgba(15, 20, 30, 0.04);
+            --shadow-sm: 0 2px 8px rgba(15, 20, 30, 0.06);
+            --shadow-md: 0 8px 24px rgba(15, 20, 30, 0.08);
+            --shadow-lg: 0 20px 50px rgba(15, 20, 30, 0.1);
+            --shadow-xl: 0 30px 80px rgba(15, 20, 30, 0.12);
         }
 
         html { scroll-behavior: smooth; }
@@ -42,26 +56,25 @@
             line-height: 1.6;
             position: relative;
             min-height: 100vh;
-            cursor: default;
         }
 
-        /* ===== CURSOR CUSTOMIZADO ===== */
+        /* ===== CURSOR ===== */
         .cursor-dot {
             width: 8px;
             height: 8px;
-            background: var(--accent);
+            background: var(--primary);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
             transition: transform 0.15s;
-            mix-blend-mode: difference;
+            mix-blend-mode: multiply;
         }
 
         .cursor-ring {
             width: 40px;
             height: 40px;
-            border: 1.5px solid rgba(255, 217, 61, 0.6);
+            border: 1.5px solid rgba(255, 94, 58, 0.5);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
@@ -80,7 +93,7 @@
             .cursor-dot, .cursor-ring { display: none; }
         }
 
-        /* ===== FUNDO ANIMADO ===== */
+        /* ===== FUNDO CLARO ANIMADO ===== */
         .bg-layer {
             position: fixed;
             inset: 0;
@@ -92,15 +105,14 @@
         .bg-gradient-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
+            filter: blur(120px);
             opacity: 0.5;
-            will-change: transform;
         }
 
         .orb-1 {
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            background: radial-gradient(circle, #ffd6c5 0%, transparent 70%);
             top: -200px;
             left: -100px;
             animation: float-orb-1 20s ease-in-out infinite;
@@ -109,54 +121,55 @@
         .orb-2 {
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+            background: radial-gradient(circle, #d4cdff 0%, transparent 70%);
             bottom: -100px;
             right: -100px;
             animation: float-orb-2 25s ease-in-out infinite;
         }
 
         .orb-3 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--mint) 0%, transparent 70%);
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, #b8f0dc 0%, transparent 70%);
             top: 40%;
             left: 40%;
             animation: float-orb-3 30s ease-in-out infinite;
-            opacity: 0.3;
+        }
+
+        .orb-4 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #fff0b8 0%, transparent 70%);
+            top: 60%;
+            right: 10%;
+            animation: float-orb-1 22s ease-in-out infinite;
         }
 
         @keyframes float-orb-1 {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(100px, 80px) scale(1.2); }
+            33% { transform: translate(100px, 80px) scale(1.15); }
             66% { transform: translate(50px, -50px) scale(0.9); }
         }
 
         @keyframes float-orb-2 {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-100px, -80px) scale(1.15); }
+            50% { transform: translate(-100px, -80px) scale(1.1); }
         }
 
         @keyframes float-orb-3 {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-80px, 60px) scale(1.3); }
+            50% { transform: translate(-80px, 60px) scale(1.2); }
         }
 
         .bg-grid {
             position: absolute;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(15, 20, 30, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 20, 30, 0.025) 1px, transparent 1px);
             background-size: 60px 60px;
             mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
             -webkit-mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
-        }
-
-        .bg-noise {
-            position: absolute;
-            inset: 0;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         }
 
         /* ===== PARTÍCULAS ===== */
@@ -169,22 +182,15 @@
         .particle {
             position: absolute;
             border-radius: 50%;
-            background: white;
             opacity: 0;
             animation: particle-float linear infinite;
         }
 
         @keyframes particle-float {
-            0% {
-                opacity: 0;
-                transform: translateY(0) scale(0);
-            }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% {
-                opacity: 0;
-                transform: translateY(-100vh) scale(1.5);
-            }
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { opacity: 0; transform: translateY(-100vh) scale(1.3); }
         }
 
         /* ===== NAVBAR ===== */
@@ -194,24 +200,24 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
-            padding: 12px 12px 12px 24px;
+            padding: 10px 10px 10px 22px;
             display: flex;
             align-items: center;
             gap: 40px;
-            background: rgba(18, 16, 31, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid var(--border);
             border-radius: 100px;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(15, 20, 30, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
         }
 
         nav.navbar.scrolled {
             top: 12px;
-            padding: 10px 10px 10px 20px;
-            background: rgba(18, 16, 31, 0.85);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            padding: 8px 8px 8px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 32px rgba(15, 20, 30, 0.1), inset 0 1px 0 rgba(255, 255, 255, 1);
         }
 
         .nav-logo {
@@ -222,7 +228,7 @@
             color: var(--text);
             font-family: 'Bricolage Grotesque', sans-serif;
             font-weight: 800;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             letter-spacing: -0.02em;
         }
 
@@ -235,17 +241,17 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
-            box-shadow: 0 4px 20px var(--primary-glow);
+            box-shadow: 0 4px 14px var(--primary-glow);
             transition: transform 0.4s;
         }
 
         .nav-logo:hover .nav-logo-icon {
-            transform: rotate(-15deg) scale(1.1);
+            transform: rotate(-15deg) scale(1.08);
         }
 
         .nav-links {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             list-style: none;
         }
 
@@ -257,17 +263,16 @@
             font-weight: 500;
             border-radius: 100px;
             transition: all 0.3s;
-            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--text);
-            background: var(--surface-2);
+            background: rgba(15, 20, 30, 0.05);
         }
 
         .nav-cta {
             padding: 10px 22px;
-            background: linear-gradient(135deg, var(--primary), var(--primary));
+            background: linear-gradient(135deg, var(--primary), var(--pink));
             color: white;
             border: none;
             border-radius: 100px;
@@ -278,7 +283,7 @@
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 20px var(--primary-glow);
+            box-shadow: 0 6px 20px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
             display: flex;
             align-items: center;
             gap: 6px;
@@ -288,23 +293,23 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, var(--accent), var(--primary));
+            background: linear-gradient(135deg, var(--pink), var(--primary));
             opacity: 0;
             transition: opacity 0.4s;
         }
 
         .nav-cta:hover::before { opacity: 1; }
-        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--primary-glow); }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 28px var(--primary-glow); }
         .nav-cta span { position: relative; z-index: 1; }
 
         .mobile-toggle {
             display: none;
-            background: var(--surface);
+            background: rgba(15, 20, 30, 0.05);
             border: 1px solid var(--border);
             width: 40px;
             height: 40px;
             border-radius: 12px;
-            color: white;
+            color: var(--text);
             font-size: 1.2rem;
             cursor: pointer;
             align-items: center;
@@ -338,13 +343,14 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 8px 18px 8px 8px;
-            background: var(--surface);
-            border: 1px solid var(--border);
+            padding: 6px 16px 6px 6px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border-2);
             border-radius: 100px;
             font-size: 0.85rem;
             color: var(--text-dim);
             margin-bottom: 30px;
+            box-shadow: var(--shadow-xs);
             backdrop-filter: blur(10px);
         }
 
@@ -352,7 +358,7 @@
             width: 26px;
             height: 26px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--mint), var(--secondary));
+            background: linear-gradient(135deg, var(--mint), var(--sky));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -372,6 +378,7 @@
             line-height: 0.98;
             letter-spacing: -0.04em;
             margin-bottom: 28px;
+            color: var(--text);
         }
 
         .hero h1 .line {
@@ -442,19 +449,19 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--pink));
             color: white;
-            box-shadow: 0 10px 40px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 20px 50px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 45px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .btn-primary::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, var(--accent), var(--primary));
+            background: linear-gradient(135deg, var(--pink), var(--primary));
             opacity: 0;
             transition: opacity 0.4s;
         }
@@ -463,16 +470,17 @@
         .btn-primary > * { position: relative; z-index: 1; }
 
         .btn-ghost {
-            background: var(--surface);
+            background: rgba(255, 255, 255, 0.9);
             color: var(--text);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-2);
+            box-shadow: var(--shadow-sm);
         }
 
         .btn-ghost:hover {
-            background: var(--surface-2);
+            background: white;
             border-color: var(--border-hover);
             transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
         }
 
         .hero-stats {
@@ -487,22 +495,21 @@
 
         .hero-stat-value {
             font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 800;
             letter-spacing: -0.03em;
             line-height: 1;
-            background: linear-gradient(135deg, #fff, var(--text-dim));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text);
+            transition: transform 0.3s;
         }
 
         .hero-stat-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-top: 6px;
+            font-weight: 600;
         }
 
         /* ===== HERO VISUAL 3D ===== */
@@ -522,15 +529,14 @@
         }
 
         .stack-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: white;
             border: 1px solid var(--border);
             border-radius: 28px;
             padding: 30px;
             box-shadow: 
-                0 30px 80px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 4px 12px rgba(15, 20, 30, 0.04),
+                0 30px 60px rgba(15, 20, 30, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
             position: relative;
             overflow: hidden;
         }
@@ -542,7 +548,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 1), transparent);
         }
 
         .stack-card-main {
@@ -560,16 +566,18 @@
             position: absolute;
             inset: 0;
             transform: translateZ(-60px) translateY(30px) scale(0.92) rotate(-4deg);
-            opacity: 0.6;
+            opacity: 0.7;
             z-index: 2;
+            background: rgba(255, 255, 255, 0.7);
         }
 
         .stack-card-behind-2 {
             position: absolute;
             inset: 0;
             transform: translateZ(-120px) translateY(60px) scale(0.85) rotate(-8deg);
-            opacity: 0.3;
+            opacity: 0.4;
             z-index: 1;
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .card-header-ui {
@@ -589,12 +597,12 @@
             width: 50px;
             height: 50px;
             border-radius: 16px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, #ffd6c5, #ffe9c5);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.6rem;
-            box-shadow: 0 8px 24px var(--primary-glow);
+            box-shadow: 0 8px 20px rgba(255, 94, 58, 0.15);
             animation: wiggle 4s ease-in-out infinite;
         }
 
@@ -608,6 +616,7 @@
             font-weight: 700;
             font-size: 1.15rem;
             letter-spacing: -0.02em;
+            color: var(--text);
         }
 
         .card-subtitle {
@@ -620,8 +629,8 @@
             align-items: center;
             gap: 6px;
             padding: 6px 12px;
-            background: rgba(0, 245, 160, 0.15);
-            border: 1px solid rgba(0, 245, 160, 0.3);
+            background: rgba(0, 201, 135, 0.1);
+            border: 1px solid rgba(0, 201, 135, 0.2);
             border-radius: 100px;
             font-size: 0.7rem;
             font-weight: 600;
@@ -654,7 +663,7 @@
 
         .progress-track {
             height: 8px;
-            background: var(--surface-2);
+            background: rgba(15, 20, 30, 0.05);
             border-radius: 100px;
             overflow: hidden;
             position: relative;
@@ -666,14 +675,14 @@
             border-radius: 100px;
             position: relative;
             transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 0 20px var(--mint-glow);
+            box-shadow: 0 0 12px var(--mint-glow);
         }
 
         .progress-fill-ui::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
             animation: shimmer 2s infinite;
         }
 
@@ -687,7 +696,7 @@
             align-items: center;
             gap: 14px;
             padding: 14px;
-            background: var(--surface);
+            background: rgba(15, 20, 30, 0.03);
             border: 1px solid var(--border);
             border-radius: 18px;
             margin-bottom: 10px;
@@ -705,8 +714,8 @@
         }
 
         .card-guest-row:hover {
-            background: var(--surface-2);
-            border-color: var(--border-hover);
+            background: rgba(15, 20, 30, 0.05);
+            border-color: var(--border-2);
             transform: translateX(6px);
         }
 
@@ -721,7 +730,7 @@
             font-size: 0.85rem;
             color: white;
             flex-shrink: 0;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 16px rgba(15, 20, 30, 0.15);
         }
 
         .guest-info-ui {
@@ -736,6 +745,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            color: var(--text);
         }
 
         .guest-bringing-ui {
@@ -750,12 +760,12 @@
             width: 26px;
             height: 26px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--mint), #00c987);
+            background: linear-gradient(135deg, var(--mint), #00a670);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.8rem;
-            color: #0a0812;
+            color: white;
             flex-shrink: 0;
             box-shadow: 0 4px 12px var(--mint-glow);
         }
@@ -764,12 +774,12 @@
         .float-badge {
             position: absolute;
             padding: 12px 18px;
-            background: rgba(18, 16, 31, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-2);
             border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(15, 20, 30, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -811,6 +821,7 @@
             font-weight: 800;
             letter-spacing: -0.02em;
             font-family: 'Bricolage Grotesque', sans-serif;
+            color: var(--text);
         }
 
         .float-badge-text span {
@@ -826,10 +837,11 @@
             overflow: hidden;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.6);
             position: relative;
             z-index: 1;
             margin: 40px 0;
+            backdrop-filter: blur(10px);
         }
 
         .marquee::before,
@@ -895,15 +907,16 @@
             align-items: center;
             gap: 8px;
             padding: 6px 14px;
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border-2);
             border-radius: 100px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 1.5px;
             margin-bottom: 24px;
+            box-shadow: var(--shadow-xs);
         }
 
         .section-label-dot {
@@ -911,7 +924,7 @@
             height: 6px;
             background: var(--primary);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--primary-glow);
+            box-shadow: 0 0 8px var(--primary-glow);
         }
 
         .section-title {
@@ -922,6 +935,7 @@
             letter-spacing: -0.04em;
             margin-bottom: 20px;
             max-width: 900px;
+            color: var(--text);
         }
 
         .section-sub {
@@ -940,20 +954,20 @@
 
         .step {
             padding: 40px 32px;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            background: white;
             border: 1px solid var(--border);
             border-radius: 28px;
             position: relative;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            transform-style: preserve-3d;
+            box-shadow: var(--shadow-sm);
         }
 
         .step::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 94, 58, 0.15), transparent 60%);
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 94, 58, 0.08), transparent 60%);
             opacity: 0;
             transition: opacity 0.5s;
             pointer-events: none;
@@ -964,7 +978,7 @@
         .step:hover {
             border-color: var(--border-hover);
             transform: translateY(-8px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            box-shadow: var(--shadow-lg);
         }
 
         .step-num {
@@ -973,7 +987,7 @@
             font-weight: 800;
             line-height: 1;
             letter-spacing: -0.06em;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), transparent);
+            background: linear-gradient(180deg, rgba(15, 20, 30, 0.12), transparent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -992,7 +1006,7 @@
             justify-content: center;
             font-size: 1.8rem;
             margin-bottom: 24px;
-            background: linear-gradient(135deg, rgba(255, 94, 58, 0.15), rgba(123, 97, 255, 0.15));
+            background: linear-gradient(135deg, #ffe9e0, #fff3e0);
             border: 1px solid var(--border);
             position: relative;
             z-index: 1;
@@ -1011,6 +1025,7 @@
             margin-bottom: 12px;
             position: relative;
             z-index: 1;
+            color: var(--text);
         }
 
         .step p {
@@ -1021,30 +1036,30 @@
             z-index: 1;
         }
 
-        /* ===== DASHBOARD / EVENTO ===== */
+        /* ===== DASHBOARD ===== */
         .dashboard {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+            background: white;
             border: 1px solid var(--border);
             border-radius: 40px;
             padding: 50px;
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-            transform-style: preserve-3d;
+            box-shadow: 
+                0 4px 12px rgba(15, 20, 30, 0.04),
+                0 30px 60px rgba(15, 20, 30, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
             transition: transform 0.15s ease-out;
         }
 
         .dashboard::before {
             content: '';
             position: absolute;
-            top: -2px;
+            top: 0;
             left: 10%;
             right: 10%;
-            height: 1px;
+            height: 2px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         .dash-header {
@@ -1054,8 +1069,6 @@
             gap: 30px;
             margin-bottom: 40px;
             flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
         }
 
         .dash-title-group {
@@ -1068,12 +1081,12 @@
             width: 70px;
             height: 70px;
             border-radius: 20px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, #ffd6c5, #ffe9c5);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            box-shadow: 0 12px 40px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 12px 30px rgba(255, 94, 58, 0.15);
             flex-shrink: 0;
             animation: wiggle 5s ease-in-out infinite;
         }
@@ -1085,6 +1098,7 @@
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin-bottom: 10px;
+            color: var(--text);
         }
 
         .dash-meta {
@@ -1110,8 +1124,8 @@
         .action-pill {
             padding: 12px 20px;
             border-radius: 100px;
-            border: 1px solid var(--border);
-            background: var(--surface);
+            border: 1px solid var(--border-2);
+            background: rgba(255, 255, 255, 0.9);
             color: var(--text);
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
@@ -1121,37 +1135,47 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-xs);
         }
 
         .action-pill:hover {
-            background: var(--surface-2);
+            background: white;
             border-color: var(--border-hover);
             transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
         }
 
         .action-pill.primary {
             background: linear-gradient(135deg, var(--primary), var(--pink));
             border-color: transparent;
-            box-shadow: 0 8px 24px var(--primary-glow);
+            color: white;
+            box-shadow: 0 8px 20px var(--primary-glow);
         }
 
         .action-pill.primary:hover {
-            box-shadow: 0 12px 32px var(--primary-glow);
+            box-shadow: 0 12px 28px var(--primary-glow);
         }
 
         .action-pill.excel {
-            background: linear-gradient(135deg, #217346, #185c37);
+            background: linear-gradient(135deg, #1f9c5c, #167a47);
             border-color: transparent;
             color: white;
-            box-shadow: 0 8px 24px rgba(33, 115, 70, 0.35);
+            box-shadow: 0 8px 20px rgba(31, 156, 92, 0.25);
+        }
+
+        .action-pill.excel:hover {
+            box-shadow: 0 12px 28px rgba(31, 156, 92, 0.35);
         }
 
         .action-pill.whats {
             background: linear-gradient(135deg, var(--green), var(--green-dark));
             border-color: transparent;
             color: white;
-            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+        }
+
+        .action-pill.whats:hover {
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
         }
 
         /* ===== STATS ===== */
@@ -1160,13 +1184,11 @@
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 16px;
             margin-bottom: 40px;
-            position: relative;
-            z-index: 2;
         }
 
         .stat-card {
             padding: 24px;
-            background: var(--surface);
+            background: rgba(255, 255, 255, 0.7);
             border: 1px solid var(--border);
             border-radius: 22px;
             position: relative;
@@ -1191,10 +1213,10 @@
         .stat-card:hover::before { transform: scaleX(1); }
 
         .stat-card:hover {
-            background: var(--surface-2);
-            border-color: var(--border-hover);
+            background: white;
+            border-color: var(--border-2);
             transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow-md);
         }
 
         .stat-icon-ui {
@@ -1206,7 +1228,7 @@
             justify-content: center;
             font-size: 1.2rem;
             margin-bottom: 16px;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(15, 20, 30, 0.04);
         }
 
         .stat-value-ui {
@@ -1218,10 +1240,10 @@
             margin-bottom: 6px;
         }
 
-        .stat-value-ui.primary { color: var(--primary); text-shadow: 0 0 30px var(--primary-glow); }
-        .stat-value-ui.mint { color: var(--mint); text-shadow: 0 0 30px var(--mint-glow); }
-        .stat-value-ui.secondary { color: var(--secondary); text-shadow: 0 0 30px var(--secondary-glow); }
-        .stat-value-ui.accent { color: var(--accent); text-shadow: 0 0 30px rgba(255, 217, 61, 0.5); }
+        .stat-value-ui.primary { color: var(--primary); }
+        .stat-value-ui.mint { color: var(--mint); }
+        .stat-value-ui.secondary { color: var(--secondary); }
+        .stat-value-ui.accent { color: var(--accent); }
 
         .stat-label-ui {
             font-size: 0.72rem;
@@ -1232,17 +1254,12 @@
         }
 
         /* ===== TABS ===== */
-        .tabs-container {
-            position: relative;
-            z-index: 2;
-        }
-
         .tabs {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             margin-bottom: 28px;
             padding: 6px;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(15, 20, 30, 0.04);
             border: 1px solid var(--border);
             border-radius: 100px;
             overflow-x: auto;
@@ -1273,23 +1290,25 @@
         .tab:hover { color: var(--text); }
 
         .tab.active {
+            background: white;
+            color: var(--text);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab.active .tab-count {
             background: linear-gradient(135deg, var(--primary), var(--pink));
             color: white;
-            box-shadow: 0 8px 24px var(--primary-glow);
         }
 
         .tab-count {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(15, 20, 30, 0.06);
             padding: 2px 8px;
             border-radius: 100px;
             font-size: 0.7rem;
             font-weight: 700;
             min-width: 22px;
             text-align: center;
-        }
-
-        .tab.active .tab-count {
-            background: rgba(255, 255, 255, 0.25);
+            transition: all 0.3s;
         }
 
         /* ===== TAB CONTENT ===== */
@@ -1305,7 +1324,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== GUESTS LIST ===== */
+        /* ===== GUESTS ===== */
         .guests-list {
             display: grid;
             gap: 12px;
@@ -1316,7 +1335,7 @@
             align-items: center;
             gap: 16px;
             padding: 18px 22px;
-            background: var(--surface);
+            background: rgba(255, 255, 255, 0.7);
             border: 1px solid var(--border);
             border-radius: 20px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1340,9 +1359,10 @@
         .guest-card:hover::before { transform: scaleY(1); }
 
         .guest-card:hover {
+            background: white;
             border-color: var(--border-hover);
-            background: var(--surface-2);
             transform: translateX(6px);
+            box-shadow: var(--shadow-sm);
         }
 
         .guest-avatar-main {
@@ -1356,7 +1376,7 @@
             font-size: 1rem;
             color: white;
             flex-shrink: 0;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(15, 20, 30, 0.15);
             transition: transform 0.3s;
         }
 
@@ -1375,6 +1395,7 @@
             font-size: 1.05rem;
             margin-bottom: 6px;
             letter-spacing: -0.02em;
+            color: var(--text);
         }
 
         .guest-tags {
@@ -1395,21 +1416,21 @@
         }
 
         .tag-bringing {
-            background: rgba(0, 245, 160, 0.12);
-            color: var(--mint);
-            border-color: rgba(0, 245, 160, 0.25);
+            background: rgba(0, 201, 135, 0.1);
+            color: #029663;
+            border-color: rgba(0, 201, 135, 0.2);
         }
 
         .tag-people {
-            background: rgba(123, 97, 255, 0.12);
-            color: #b5a5ff;
-            border-color: rgba(123, 97, 255, 0.25);
+            background: rgba(123, 97, 255, 0.1);
+            color: #6047e0;
+            border-color: rgba(123, 97, 255, 0.2);
         }
 
         .tag-restrict {
-            background: rgba(255, 217, 61, 0.12);
-            color: var(--accent);
-            border-color: rgba(255, 217, 61, 0.25);
+            background: rgba(255, 184, 0, 0.12);
+            color: #a37600;
+            border-color: rgba(255, 184, 0, 0.25);
         }
 
         .guest-wpp-btn {
@@ -1417,8 +1438,8 @@
             height: 42px;
             border-radius: 12px;
             background: rgba(37, 211, 102, 0.1);
-            border: 1px solid rgba(37, 211, 102, 0.25);
-            color: var(--green);
+            border: 1px solid rgba(37, 211, 102, 0.2);
+            color: var(--green-dark);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -1432,7 +1453,7 @@
             background: var(--green);
             color: white;
             transform: scale(1.1);
-            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
         }
 
         /* ===== DISHES ===== */
@@ -1444,20 +1465,19 @@
 
         .dish-card {
             padding: 26px;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+            background: rgba(255, 255, 255, 0.7);
             border: 1px solid var(--border);
             border-radius: 24px;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            transform-style: preserve-3d;
         }
 
         .dish-card::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 94, 58, 0.15), transparent 60%);
+            background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255, 94, 58, 0.06), transparent 60%);
             opacity: 0;
             transition: opacity 0.4s;
             pointer-events: none;
@@ -1466,9 +1486,10 @@
         .dish-card:hover::before { opacity: 1; }
 
         .dish-card:hover {
+            background: white;
             border-color: var(--border-hover);
             transform: translateY(-8px);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+            box-shadow: var(--shadow-md);
         }
 
         .dish-top {
@@ -1489,7 +1510,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
-            background: linear-gradient(135deg, rgba(255, 94, 58, 0.2), rgba(255, 217, 61, 0.2));
+            background: linear-gradient(135deg, #ffe9e0, #fff3e0);
             border: 1px solid var(--border);
             transition: transform 0.5s;
         }
@@ -1509,21 +1530,15 @@
         }
 
         .dish-status-badge.ready {
-            background: rgba(0, 245, 160, 0.15);
-            color: var(--mint);
-            border: 1px solid rgba(0, 245, 160, 0.3);
+            background: rgba(0, 201, 135, 0.12);
+            color: #029663;
+            border: 1px solid rgba(0, 201, 135, 0.25);
         }
 
         .dish-status-badge.needed {
-            background: rgba(255, 94, 58, 0.15);
+            background: rgba(255, 94, 58, 0.1);
             color: var(--primary);
-            border: 1px solid rgba(255, 94, 58, 0.3);
-            animation: pulse-soft 2s infinite;
-        }
-
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
+            border: 1px solid rgba(255, 94, 58, 0.2);
         }
 
         .dish-title {
@@ -1534,6 +1549,7 @@
             margin-bottom: 6px;
             position: relative;
             z-index: 1;
+            color: var(--text);
         }
 
         .dish-desc {
@@ -1549,7 +1565,7 @@
             align-items: center;
             gap: 12px;
             padding: 12px;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(15, 20, 30, 0.03);
             border-radius: 14px;
             position: relative;
             z-index: 1;
@@ -1570,8 +1586,8 @@
         }
 
         .dish-owner-avatar.empty {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px dashed var(--border);
+            background: rgba(15, 20, 30, 0.05);
+            border: 1px dashed var(--border-2);
             color: var(--text-muted);
         }
 
@@ -1587,6 +1603,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            color: var(--text);
         }
 
         .dish-owner-name.empty { color: var(--text-muted); font-style: italic; }
@@ -1613,20 +1630,21 @@
             padding: 12px 20px;
             border-radius: 100px;
             border: 1px solid var(--border);
-            background: var(--surface);
+            background: rgba(255, 255, 255, 0.7);
             font-size: 0.85rem;
             font-weight: 600;
+            color: var(--text);
         }
 
         .ing-counter.have {
-            background: rgba(0, 245, 160, 0.1);
-            border-color: rgba(0, 245, 160, 0.3);
-            color: var(--mint);
+            background: rgba(0, 201, 135, 0.08);
+            border-color: rgba(0, 201, 135, 0.2);
+            color: #029663;
         }
 
         .ing-counter.missing {
-            background: rgba(255, 94, 58, 0.1);
-            border-color: rgba(255, 94, 58, 0.3);
+            background: rgba(255, 94, 58, 0.06);
+            border-color: rgba(255, 94, 58, 0.18);
             color: var(--primary);
         }
 
@@ -1644,7 +1662,7 @@
 
         .ing-item {
             padding: 16px 18px;
-            background: var(--surface);
+            background: rgba(255, 255, 255, 0.7);
             border: 1px solid var(--border);
             border-radius: 16px;
             display: flex;
@@ -1657,21 +1675,22 @@
         }
 
         .ing-item:hover {
-            background: var(--surface-2);
+            background: white;
             border-color: var(--border-hover);
             transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
         }
 
         .ing-item.done {
-            background: rgba(0, 245, 160, 0.08);
-            border-color: rgba(0, 245, 160, 0.3);
+            background: rgba(0, 201, 135, 0.06);
+            border-color: rgba(0, 201, 135, 0.2);
         }
 
         .ing-check {
             width: 24px;
             height: 24px;
             border-radius: 8px;
-            border: 2px solid var(--border);
+            border: 2px solid var(--border-2);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1684,7 +1703,7 @@
         .ing-item.done .ing-check {
             background: var(--mint);
             border-color: var(--mint);
-            color: #0a0812;
+            color: white;
             transform: scale(1.1);
         }
 
@@ -1698,6 +1717,7 @@
             font-size: 0.9rem;
             margin-bottom: 2px;
             transition: all 0.3s;
+            color: var(--text);
         }
 
         .ing-item.done .ing-name {
@@ -1713,7 +1733,7 @@
         .ing-cat {
             padding: 3px 10px;
             border-radius: 100px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(15, 20, 30, 0.05);
             font-size: 0.65rem;
             font-weight: 600;
             color: var(--text-dim);
@@ -1722,17 +1742,18 @@
             flex-shrink: 0;
         }
 
-        /* ===== FORM RSVP ===== */
+        /* ===== FORM ===== */
         .form-wrapper {
             max-width: 720px;
             margin: 0 auto;
             padding: 50px;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            background: white;
             border: 1px solid var(--border);
             border-radius: 32px;
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 4px 12px rgba(15, 20, 30, 0.04),
+                0 30px 60px rgba(15, 20, 30, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
             position: relative;
             overflow: hidden;
         }
@@ -1740,11 +1761,12 @@
         .form-wrapper::before {
             content: '';
             position: absolute;
-            top: -2px;
+            top: 0;
             left: 15%;
             right: 15%;
-            height: 1px;
+            height: 2px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.5;
         }
 
         .form-field {
@@ -1753,7 +1775,7 @@
 
         .form-label {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 600;
             color: var(--text-dim);
             text-transform: uppercase;
@@ -1768,7 +1790,7 @@
         .form-textarea {
             width: 100%;
             padding: 16px 20px;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(15, 20, 30, 0.03);
             border: 1px solid var(--border);
             border-radius: 16px;
             color: var(--text);
@@ -1787,21 +1809,16 @@
         .form-select:focus,
         .form-textarea:focus {
             border-color: var(--primary);
-            background: rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 0 4px rgba(255, 94, 58, 0.15), 0 0 30px var(--primary-glow);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(255, 94, 58, 0.1), 0 4px 20px rgba(255, 94, 58, 0.08);
         }
 
         .form-select {
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='3'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 20px center;
-        }
-
-        .form-select option {
-            background: var(--bg-2);
-            color: var(--text);
         }
 
         .form-textarea {
@@ -1823,7 +1840,7 @@
 
         .dish-pick {
             padding: 18px 12px;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(15, 20, 30, 0.03);
             border: 1.5px solid var(--border);
             border-radius: 16px;
             cursor: pointer;
@@ -1837,13 +1854,14 @@
         .dish-pick:hover {
             border-color: var(--border-hover);
             transform: translateY(-4px);
-            background: rgba(0, 0, 0, 0.4);
+            background: white;
+            box-shadow: var(--shadow-sm);
         }
 
         .dish-pick.selected {
-            background: linear-gradient(135deg, rgba(255, 94, 58, 0.15), rgba(255, 217, 61, 0.1));
+            background: linear-gradient(135deg, #fff3ee, #fff8e6);
             border-color: var(--primary);
-            box-shadow: 0 8px 24px var(--primary-glow);
+            box-shadow: 0 8px 20px var(--primary-glow);
         }
 
         .dish-pick.selected::before {
@@ -1855,13 +1873,14 @@
             height: 22px;
             border-radius: 50%;
             background: var(--mint);
-            color: #0a0812;
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.75rem;
             font-weight: 800;
             animation: pop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 10px var(--mint-glow);
         }
 
         @keyframes pop {
@@ -1870,7 +1889,7 @@
         }
 
         .dish-pick.taken {
-            opacity: 0.35;
+            opacity: 0.4;
             cursor: not-allowed;
         }
 
@@ -1889,6 +1908,7 @@
             font-size: 0.78rem;
             font-weight: 600;
             line-height: 1.3;
+            color: var(--text);
         }
 
         .dish-pick-taken-by {
@@ -1912,7 +1932,7 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 12px 40px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 12px 30px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1923,7 +1943,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, var(--accent), var(--primary));
+            background: linear-gradient(135deg, var(--pink), var(--primary));
             opacity: 0;
             transition: opacity 0.4s;
         }
@@ -1931,7 +1951,7 @@
         .submit-btn:hover::after { opacity: 1; }
         .submit-btn:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 50px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 45px var(--primary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .submit-btn > * { position: relative; z-index: 1; }
@@ -1945,21 +1965,21 @@
             height: 64px;
             border-radius: 20px;
             background: linear-gradient(135deg, var(--secondary), var(--primary));
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 15px 40px var(--secondary-glow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px var(--secondary-glow), 0 4px 12px rgba(15, 20, 30, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
             z-index: 998;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .admin-fab:hover {
             transform: scale(1.1) rotate(90deg);
-            box-shadow: 0 20px 50px var(--secondary-glow);
+            box-shadow: 0 20px 45px var(--secondary-glow), 0 4px 12px rgba(15, 20, 30, 0.15);
         }
 
         .admin-panel-v2 {
@@ -1969,15 +1989,13 @@
             width: 540px;
             max-width: 100vw;
             height: 100vh;
-            background: linear-gradient(180deg, rgba(18, 16, 31, 0.98), rgba(10, 8, 18, 0.98));
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            background: white;
             border-left: 1px solid var(--border);
             z-index: 1000;
             transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
-            box-shadow: -30px 0 80px rgba(0, 0, 0, 0.5);
+            box-shadow: -30px 0 80px rgba(15, 20, 30, 0.15);
         }
 
         .admin-panel-v2.open { right: 0; }
@@ -1989,6 +2007,7 @@
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
+            background: rgba(250, 250, 247, 0.6);
         }
 
         .admin-title-v2 {
@@ -1999,6 +2018,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            color: var(--text);
         }
 
         .admin-title-emoji {
@@ -2017,7 +2037,7 @@
             width: 40px;
             height: 40px;
             border-radius: 12px;
-            background: var(--surface);
+            background: rgba(15, 20, 30, 0.04);
             border: 1px solid var(--border);
             color: var(--text);
             font-size: 1.4rem;
@@ -2031,6 +2051,7 @@
         .admin-close-v2:hover {
             background: var(--primary);
             border-color: var(--primary);
+            color: white;
             transform: rotate(90deg);
         }
 
@@ -2047,7 +2068,7 @@
             padding: 14px;
             border-radius: 14px;
             border: 1px solid var(--border);
-            background: var(--surface);
+            background: rgba(15, 20, 30, 0.03);
             color: var(--text);
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
@@ -2061,28 +2082,28 @@
         }
 
         .admin-tool:hover {
-            background: var(--surface-2);
-            border-color: var(--border-hover);
+            background: rgba(15, 20, 30, 0.06);
+            border-color: var(--border-2);
             transform: translateY(-2px);
         }
 
         .admin-tool.excel {
-            background: linear-gradient(135deg, #217346, #185c37);
+            background: linear-gradient(135deg, #1f9c5c, #167a47);
             border-color: transparent;
             color: white;
-            box-shadow: 0 6px 20px rgba(33, 115, 70, 0.35);
+            box-shadow: 0 6px 18px rgba(31, 156, 92, 0.25);
         }
 
         .admin-tool.share {
             background: linear-gradient(135deg, var(--green), var(--green-dark));
             border-color: transparent;
             color: white;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.25);
         }
 
         .admin-tool.danger {
-            background: rgba(255, 94, 58, 0.15);
-            border-color: rgba(255, 94, 58, 0.4);
+            background: rgba(255, 94, 58, 0.08);
+            border-color: rgba(255, 94, 58, 0.2);
             color: var(--primary);
         }
 
@@ -2102,7 +2123,7 @@
 
         .admin-kpi {
             padding: 18px 12px;
-            background: rgba(18, 16, 31, 0.95);
+            background: white;
             text-align: center;
         }
 
@@ -2131,7 +2152,7 @@
         .admin-search-input {
             width: 100%;
             padding: 14px 20px;
-            background: var(--surface);
+            background: rgba(15, 20, 30, 0.03);
             border: 1px solid var(--border);
             border-radius: 14px;
             color: var(--text);
@@ -2145,8 +2166,8 @@
 
         .admin-search-input:focus {
             border-color: var(--primary);
-            background: rgba(0, 0, 0, 0.3);
-            box-shadow: 0 0 0 4px rgba(255, 94, 58, 0.12);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(255, 94, 58, 0.08);
         }
 
         .admin-list-v2 {
@@ -2157,7 +2178,7 @@
 
         .admin-guest-v2 {
             padding: 18px;
-            background: var(--surface);
+            background: rgba(15, 20, 30, 0.03);
             border: 1px solid var(--border);
             border-radius: 18px;
             margin-bottom: 12px;
@@ -2178,9 +2199,10 @@
         }
 
         .admin-guest-v2:hover {
-            background: var(--surface-2);
+            background: white;
             border-color: var(--border-hover);
             transform: translateX(-4px);
+            box-shadow: var(--shadow-sm);
         }
 
         .admin-guest-top {
@@ -2196,6 +2218,7 @@
             font-weight: 700;
             font-size: 1rem;
             letter-spacing: -0.01em;
+            color: var(--text);
         }
 
         .admin-guest-time {
@@ -2229,7 +2252,7 @@
             padding: 8px 14px;
             border-radius: 10px;
             border: 1px solid var(--border);
-            background: var(--surface);
+            background: rgba(15, 20, 30, 0.04);
             color: var(--text);
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
@@ -2242,9 +2265,9 @@
         }
 
         .admin-mini-btn.wpp {
-            background: rgba(37, 211, 102, 0.1);
-            border-color: rgba(37, 211, 102, 0.3);
-            color: var(--green);
+            background: rgba(37, 211, 102, 0.08);
+            border-color: rgba(37, 211, 102, 0.2);
+            color: var(--green-dark);
         }
 
         .admin-mini-btn.wpp:hover {
@@ -2254,8 +2277,8 @@
         }
 
         .admin-mini-btn.del {
-            background: rgba(255, 94, 58, 0.1);
-            border-color: rgba(255, 94, 58, 0.3);
+            background: rgba(255, 94, 58, 0.06);
+            border-color: rgba(255, 94, 58, 0.2);
             color: var(--primary);
         }
 
@@ -2282,7 +2305,7 @@
         .overlay {
             position: fixed;
             inset: 0;
-            background: rgba(10, 8, 18, 0.7);
+            background: rgba(15, 20, 30, 0.3);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             z-index: 999;
@@ -2304,9 +2327,7 @@
             transform: translate(-50%, -50%) scale(0.85);
             width: 90%;
             max-width: 500px;
-            background: linear-gradient(145deg, rgba(18, 16, 31, 0.98), rgba(10, 8, 18, 0.98));
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            background: white;
             border: 1px solid var(--border);
             border-radius: 32px;
             padding: 45px 38px;
@@ -2315,16 +2336,16 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            box-shadow: 0 40px 100px rgba(15, 20, 30, 0.25), inset 0 1px 0 rgba(255, 255, 255, 1);
         }
 
         .success-modal::before {
             content: '';
             position: absolute;
-            top: -2px;
+            top: 0;
             left: 20%;
             right: 20%;
-            height: 1px;
+            height: 2px;
             background: linear-gradient(90deg, transparent, var(--mint), transparent);
         }
 
@@ -2352,7 +2373,7 @@
             font-weight: 800;
             letter-spacing: -0.03em;
             margin-bottom: 14px;
-            background: linear-gradient(135deg, var(--mint), var(--accent));
+            background: linear-gradient(135deg, var(--mint), var(--sky));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -2371,14 +2392,12 @@
             bottom: 110px;
             right: 30px;
             padding: 16px 24px;
-            background: rgba(18, 16, 31, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: white;
             border: 1px solid var(--border);
             border-radius: 16px;
             font-weight: 600;
             font-size: 0.9rem;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 40px rgba(15, 20, 30, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
             transform: translateX(400px);
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 1002;
@@ -2386,11 +2405,12 @@
             align-items: center;
             gap: 12px;
             max-width: 340px;
+            color: var(--text);
         }
 
         .toast.show { transform: translateX(0); }
-        .toast.success { border-color: rgba(0, 245, 160, 0.4); box-shadow: 0 15px 50px rgba(0, 245, 160, 0.2); }
-        .toast.error { border-color: rgba(255, 94, 58, 0.4); box-shadow: 0 15px 50px rgba(255, 94, 58, 0.2); }
+        .toast.success { border-color: rgba(0, 201, 135, 0.4); box-shadow: 0 15px 40px rgba(0, 201, 135, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1); }
+        .toast.error { border-color: rgba(255, 94, 58, 0.4); box-shadow: 0 15px 40px rgba(255, 94, 58, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1); }
 
         /* ===== FOOTER ===== */
         footer {
@@ -2399,7 +2419,7 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .footer-brand {
@@ -2493,12 +2513,12 @@
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: rgba(15, 20, 30, 0.15);
             border-radius: 5px;
             border: 2px solid var(--bg);
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, var(--accent), var(--primary));
+            background: rgba(15, 20, 30, 0.25);
         }
     </style>
 </head>
@@ -2508,13 +2528,13 @@
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-ring" id="cursorRing"></div>
 
-    <!-- FUNDO -->
+    <!-- FUNDO CLARO -->
     <div class="bg-layer">
         <div class="bg-gradient-orb orb-1"></div>
         <div class="bg-gradient-orb orb-2"></div>
         <div class="bg-gradient-orb orb-3"></div>
+        <div class="bg-gradient-orb orb-4"></div>
         <div class="bg-grid"></div>
-        <div class="bg-noise"></div>
         <div class="particles" id="particles"></div>
     </div>
 
@@ -2580,11 +2600,9 @@
 
         <div class="hero-right">
             <div class="card-stack" id="cardStack">
-                <!-- Cards atrás -->
                 <div class="stack-card stack-card-behind-2"></div>
                 <div class="stack-card stack-card-behind-1"></div>
 
-                <!-- Card principal -->
                 <div class="stack-card stack-card-main">
                     <div class="card-header-ui">
                         <div class="card-title-group">
@@ -2611,7 +2629,7 @@
                     </div>
 
                     <div class="card-guest-row">
-                        <div class="guest-avatar-ui" style="background: linear-gradient(135deg, #ff5e3a, #ffd93d);">JS</div>
+                        <div class="guest-avatar-ui" style="background: linear-gradient(135deg, #ff5e3a, #ffb800);">JS</div>
                         <div class="guest-info-ui">
                             <div class="guest-name-ui">João Silva</div>
                             <div class="guest-bringing-ui">🥩 Picanha (1,5kg)</div>
@@ -2629,7 +2647,7 @@
                     </div>
 
                     <div class="card-guest-row">
-                        <div class="guest-avatar-ui" style="background: linear-gradient(135deg, #00f5a0, #00c987);">PC</div>
+                        <div class="guest-avatar-ui" style="background: linear-gradient(135deg, #00c987, #4dd5a7);">PC</div>
                         <div class="guest-info-ui">
                             <div class="guest-name-ui">Pedro Costa</div>
                             <div class="guest-bringing-ui">🥗 Farofa + Vinagrete</div>
@@ -2638,9 +2656,8 @@
                     </div>
                 </div>
 
-                <!-- Floating badges -->
                 <div class="float-badge float-badge-1">
-                    <div class="float-badge-icon" style="background: rgba(0, 245, 160, 0.15);">✅</div>
+                    <div class="float-badge-icon" style="background: rgba(0, 201, 135, 0.1);">✅</div>
                     <div class="float-badge-text">
                         <strong id="floatBadge1">0</strong>
                         <span>Confirmados</span>
@@ -2648,7 +2665,7 @@
                 </div>
 
                 <div class="float-badge float-badge-2">
-                    <div class="float-badge-icon" style="background: rgba(255, 94, 58, 0.15);">⚠️</div>
+                    <div class="float-badge-icon" style="background: rgba(255, 94, 58, 0.1);">⚠️</div>
                     <div class="float-badge-text">
                         <strong id="floatBadge2">0</strong>
                         <span>Faltando</span>
@@ -2660,9 +2677,7 @@
 
     <!-- MARQUEE -->
     <div class="marquee">
-        <div class="marquee-track" id="marqueeTrack">
-            <!-- Preenchido via JS -->
-        </div>
+        <div class="marquee-track" id="marqueeTrack"></div>
     </div>
 
     <!-- COMO FUNCIONA -->
@@ -2719,15 +2734,9 @@
                     </div>
                 </div>
                 <div class="dash-actions">
-                    <button class="action-pill excel" onclick="exportExcel()">
-                        📊 Excel
-                    </button>
-                    <button class="action-pill whats" onclick="shareEvent()">
-                        📤 Compartilhar
-                    </button>
-                    <button class="action-pill primary" onclick="scrollToForm()">
-                        ✨ Confirmar
-                    </button>
+                    <button class="action-pill excel" onclick="exportExcel()">📊 Excel</button>
+                    <button class="action-pill whats" onclick="shareEvent()">📤 Compartilhar</button>
+                    <button class="action-pill primary" onclick="scrollToForm()">✨ Confirmar</button>
                 </div>
             </div>
 
@@ -2754,44 +2763,39 @@
                 </div>
             </div>
 
-            <div class="tabs-container">
-                <div class="tabs">
-                    <button class="tab active" onclick="switchTab('guests', this)">
-                        👥 Convidados
-                        <span class="tab-count" id="tabCountGuests">0</span>
-                    </button>
-                    <button class="tab" onclick="switchTab('dishes', this)">
-                        🍽️ Cardápio
-                        <span class="tab-count" id="tabCountDishes">0</span>
-                    </button>
-                    <button class="tab" onclick="switchTab('ingredients', this)">
-                        🛒 Ingredientes
-                        <span class="tab-count" id="tabCountIngredients">0</span>
-                    </button>
-                </div>
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('guests', this)">
+                    👥 Convidados
+                    <span class="tab-count" id="tabCountGuests">0</span>
+                </button>
+                <button class="tab" onclick="switchTab('dishes', this)">
+                    🍽️ Cardápio
+                    <span class="tab-count" id="tabCountDishes">0</span>
+                </button>
+                <button class="tab" onclick="switchTab('ingredients', this)">
+                    🛒 Ingredientes
+                    <span class="tab-count" id="tabCountIngredients">0</span>
+                </button>
+            </div>
 
-                <!-- GUESTS -->
-                <div class="tab-pane active" id="pane-guests">
-                    <div class="guests-list" id="guestsList"></div>
-                </div>
+            <div class="tab-pane active" id="pane-guests">
+                <div class="guests-list" id="guestsList"></div>
+            </div>
 
-                <!-- DISHES -->
-                <div class="tab-pane" id="pane-dishes">
-                    <div class="dishes-grid" id="dishesGrid"></div>
-                </div>
+            <div class="tab-pane" id="pane-dishes">
+                <div class="dishes-grid" id="dishesGrid"></div>
+            </div>
 
-                <!-- INGREDIENTS -->
-                <div class="tab-pane" id="pane-ingredients">
-                    <div class="ingredients-topbar">
-                        <div class="ing-counter have">
-                            <span>✅</span> <strong id="ingHave">0</strong> <span>já temos</span>
-                        </div>
-                        <div class="ing-counter missing">
-                            <span>⚠️</span> <strong id="ingMissing">0</strong> <span>faltando</span>
-                        </div>
+            <div class="tab-pane" id="pane-ingredients">
+                <div class="ingredients-topbar">
+                    <div class="ing-counter have">
+                        <span>✅</span> <strong id="ingHave">0</strong> <span>já temos</span>
                     </div>
-                    <div class="ingredients-grid" id="ingredientsGrid"></div>
+                    <div class="ing-counter missing">
+                        <span>⚠️</span> <strong id="ingMissing">0</strong> <span>faltando</span>
+                    </div>
                 </div>
+                <div class="ingredients-grid" id="ingredientsGrid"></div>
             </div>
         </div>
     </section>
@@ -2938,7 +2942,6 @@
             whatsappHost: '5531999999999'
         };
 
-        // ===== CATÁLOGO =====
         const DISHES = [
             { id: 'picanha', name: 'Picanha', emoji: '🥩', desc: 'Carne nobre para o churrasco' },
             { id: 'linguica', name: 'Linguiça', emoji: '🌭', desc: 'Linguiça toscana artesanal' },
@@ -2954,7 +2957,6 @@
             { id: 'descartaveis', name: 'Descartáveis', emoji: '🍽️', desc: 'Copos, pratos e talheres' }
         ];
 
-        // Ingredientes por prato
         const INGREDIENTS_MAP = {
             picanha: [{ n: 'Picanha', q: '1,5kg', c: 'Carnes' }, { n: 'Sal grosso', q: '200g', c: 'Temperos' }],
             linguica: [{ n: 'Linguiça toscana', q: '1kg', c: 'Carnes' }],
@@ -2970,45 +2972,35 @@
             descartaveis: [{ n: 'Copos descartáveis', q: '100un', c: 'Descartáveis' }, { n: 'Pratos descartáveis', q: '100un', c: 'Descartáveis' }]
         };
 
-        // ===== STATE =====
         let guests = [];
         let selectedDishes = new Set();
         let lastGuest = null;
 
-        // ===== PERSISTENCE =====
         function load() {
             try {
                 const g = localStorage.getItem('vf_guests');
                 if (g) guests = JSON.parse(g);
                 const c = localStorage.getItem('vf_checked');
-                if (c) window.__checkedIngredients = JSON.parse(c);
-                else window.__checkedIngredients = [];
+                window.__checkedIngredients = c ? JSON.parse(c) : [];
             } catch(e) { guests = []; window.__checkedIngredients = []; }
         }
 
-        function save() {
-            localStorage.setItem('vf_guests', JSON.stringify(guests));
-        }
-
+        function save() { localStorage.setItem('vf_guests', JSON.stringify(guests)); }
         function saveChecked() {
             const list = [];
             document.querySelectorAll('.ing-item.done').forEach(el => list.push(el.dataset.key));
             localStorage.setItem('vf_checked', JSON.stringify(list));
         }
 
-        // ===== CURSOR =====
         function initCursor() {
             const dot = document.getElementById('cursorDot');
             const ring = document.getElementById('cursorRing');
             if (!dot || !ring) return;
-
             let mx = 0, my = 0, rx = 0, ry = 0;
-
             document.addEventListener('mousemove', e => {
                 mx = e.clientX; my = e.clientY;
                 dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
             });
-
             function animate() {
                 rx += (mx - rx) * 0.15;
                 ry += (my - ry) * 0.15;
@@ -3016,51 +3008,39 @@
                 requestAnimationFrame(animate);
             }
             animate();
-
             document.querySelectorAll('a, button, .step, .dish-card, .stat-card, .guest-card, .ing-item, .dish-pick').forEach(el => {
                 el.addEventListener('mouseenter', () => ring.classList.add('hover'));
                 el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
             });
         }
 
-        // ===== PARTICLES =====
         function initParticles() {
             const container = document.getElementById('particles');
             if (!container) return;
             for (let i = 0; i < 40; i++) {
                 const p = document.createElement('div');
                 p.className = 'particle';
-                const size = Math.random() * 3 + 1;
+                const size = Math.random() * 4 + 2;
                 p.style.width = size + 'px';
                 p.style.height = size + 'px';
                 p.style.left = Math.random() * 100 + '%';
                 p.style.bottom = '-10px';
                 p.style.animationDuration = (Math.random() * 15 + 15) + 's';
                 p.style.animationDelay = (Math.random() * 15) + 's';
-                p.style.background = ['#ff5e3a', '#ffd93d', '#7b61ff', '#00f5a0', '#ff2e88'][Math.floor(Math.random() * 5)];
+                p.style.background = ['#ff5e3a', '#ffb800', '#7b61ff', '#00c987', '#ff2e88'][Math.floor(Math.random() * 5)];
                 container.appendChild(p);
             }
         }
 
-        // ===== 3D MOUSE TILT =====
         function init3DTilt() {
-            // Card stack
             const stack = document.getElementById('cardStack');
             const dashboard = document.getElementById('dashboard');
-
             document.addEventListener('mousemove', e => {
                 const x = (e.clientX / window.innerWidth - 0.5);
                 const y = (e.clientY / window.innerHeight - 0.5);
-
-                if (stack) {
-                    stack.style.transform = `perspective(1500px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
-                }
-                if (dashboard && window.innerWidth > 900) {
-                    dashboard.style.transform = `perspective(2000px) rotateY(${x * 2}deg) rotateX(${-y * 2}deg)`;
-                }
+                if (stack) stack.style.transform = `perspective(1500px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+                if (dashboard && window.innerWidth > 900) dashboard.style.transform = `perspective(2000px) rotateY(${x * 1.5}deg) rotateX(${-y * 1.5}deg)`;
             });
-
-            // Step cards com highlight seguindo o mouse
             document.querySelectorAll('.step, .dish-card').forEach(card => {
                 card.addEventListener('mousemove', e => {
                     const rect = card.getBoundingClientRect();
@@ -3072,7 +3052,6 @@
             });
         }
 
-        // ===== MARQUEE =====
         function initMarquee() {
             const track = document.getElementById('marqueeTrack');
             const items = ['Sem cadastro', 'Sem app', 'Zero planilhas', '100% WhatsApp-friendly', 'Organização inteligente', 'Em tempo real', 'Grátis pra sempre'];
@@ -3080,7 +3059,6 @@
             track.innerHTML = html + html;
         }
 
-        // ===== TABS =====
         function switchTab(name, btn) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
@@ -3088,33 +3066,24 @@
             document.getElementById('pane-' + name).classList.add('active');
         }
 
-        // ===== SCROLL TO FORM =====
-        function scrollToForm() {
-            document.getElementById('confirmar').scrollIntoView({ behavior: 'smooth' });
-        }
+        function scrollToForm() { document.getElementById('confirmar').scrollIntoView({ behavior: 'smooth' }); }
 
-        // ===== TOGGLE MOBILE =====
         function toggleMobile() {
             const nav = document.querySelector('.nav-links');
-            if (nav.style.display === 'flex') {
-                nav.style.display = '';
-            } else {
-                nav.style.display = 'flex';
-                nav.style.flexDirection = 'column';
-                nav.style.position = 'absolute';
-                nav.style.top = '110%';
-                nav.style.left = '0';
-                nav.style.right = '0';
-                nav.style.background = 'rgba(18, 16, 31, 0.98)';
+            if (nav.style.display === 'flex') { nav.style.display = ''; }
+            else {
+                nav.style.display = 'flex'; nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute'; nav.style.top = '110%';
+                nav.style.left = '0'; nav.style.right = '0';
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
                 nav.style.backdropFilter = 'blur(30px)';
-                nav.style.padding = '20px';
-                nav.style.gap = '6px';
+                nav.style.padding = '20px'; nav.style.gap = '6px';
                 nav.style.borderRadius = '24px';
-                nav.style.border = '1px solid rgba(255,255,255,0.1)';
+                nav.style.border = '1px solid rgba(15, 20, 30, 0.08)';
+                nav.style.boxShadow = '0 20px 50px rgba(15, 20, 30, 0.1)';
             }
         }
 
-        // ===== RENDER DISHES PICKER =====
         function renderPicker() {
             const picker = document.getElementById('dishesPicker');
             picker.innerHTML = DISHES.map(d => {
@@ -3135,47 +3104,28 @@
         function toggleDish(id) {
             const el = document.querySelector(`.dish-pick[data-id="${id}"]`);
             if (!el || el.classList.contains('taken')) return;
-
-            if (selectedDishes.has(id)) {
-                selectedDishes.delete(id);
-                el.classList.remove('selected');
-            } else {
-                selectedDishes.add(id);
-                el.classList.add('selected');
-            }
+            if (selectedDishes.has(id)) { selectedDishes.delete(id); el.classList.remove('selected'); }
+            else { selectedDishes.add(id); el.classList.add('selected'); }
         }
 
-        // ===== RENDER GUESTS =====
         function renderGuests() {
             const list = document.getElementById('guestsList');
             if (guests.length === 0) {
-                list.innerHTML = `
-                    <div class="empty-state">
-                        <span class="empty-emoji">👋</span>
-                        <p>Ninguém confirmou ainda</p>
-                        <p style="font-size: 0.85rem; margin-top: 6px;">Seja o primeiro!</p>
-                    </div>
-                `;
+                list.innerHTML = `<div class="empty-state"><span class="empty-emoji">👋</span><p>Ninguém confirmou ainda</p><p style="font-size: 0.85rem; margin-top: 6px;">Seja o primeiro!</p></div>`;
                 return;
             }
-
             const colors = [
-                'linear-gradient(135deg, #ff5e3a, #ffd93d)',
+                'linear-gradient(135deg, #ff5e3a, #ffb800)',
                 'linear-gradient(135deg, #7b61ff, #b5a5ff)',
-                'linear-gradient(135deg, #00f5a0, #00c987)',
+                'linear-gradient(135deg, #00c987, #4dd5a7)',
                 'linear-gradient(135deg, #ff2e88, #ff6ba6)',
-                'linear-gradient(135deg, #ffd93d, #ff8f3a)',
-                'linear-gradient(135deg, #4a90e2, #7bb8f0)'
+                'linear-gradient(135deg, #4a90e2, #7bb8f0)',
+                'linear-gradient(135deg, #ffb800, #ff8f3a)'
             ];
-
             list.innerHTML = guests.map((g, i) => {
                 const initials = g.name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase();
                 const color = colors[i % colors.length];
-                const dishes = g.dishes.map(id => {
-                    const d = DISHES.find(x => x.id === id);
-                    return d ? `${d.emoji} ${d.name}` : '';
-                }).filter(Boolean).join(' · ');
-
+                const dishes = g.dishes.map(id => { const d = DISHES.find(x => x.id === id); return d ? `${d.emoji} ${d.name}` : ''; }).filter(Boolean).join(' · ');
                 return `
                     <div class="guest-card">
                         <div class="guest-avatar-main" style="background: ${color};">${initials}</div>
@@ -3193,43 +3143,25 @@
             }).join('');
         }
 
-        // ===== RENDER DISHES =====
         function renderDishes() {
             const grid = document.getElementById('dishesGrid');
             const takenDishes = new Set();
             guests.forEach(g => g.dishes.forEach(d => takenDishes.add(d)));
-
             grid.innerHTML = DISHES.map(d => {
                 const owner = guests.find(g => g.dishes.includes(d.id));
                 const ready = !!owner;
-
                 let ownerHTML = '';
                 if (owner) {
                     const initials = owner.name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase();
-                    ownerHTML = `
-                        <div class="dish-owner-avatar" style="background: linear-gradient(135deg, #00f5a0, #00c987);">${initials}</div>
-                        <div class="dish-owner-info">
-                            <div class="dish-owner-name">${owner.name}</div>
-                            <div class="dish-owner-label">Vai trazer</div>
-                        </div>
-                    `;
+                    ownerHTML = `<div class="dish-owner-avatar" style="background: linear-gradient(135deg, #00c987, #4dd5a7);">${initials}</div><div class="dish-owner-info"><div class="dish-owner-name">${owner.name}</div><div class="dish-owner-label">Vai trazer</div></div>`;
                 } else {
-                    ownerHTML = `
-                        <div class="dish-owner-avatar empty">?</div>
-                        <div class="dish-owner-info">
-                            <div class="dish-owner-name empty">Ninguém ainda</div>
-                            <div class="dish-owner-label">Seja o primeiro</div>
-                        </div>
-                    `;
+                    ownerHTML = `<div class="dish-owner-avatar empty">?</div><div class="dish-owner-info"><div class="dish-owner-name empty">Ninguém ainda</div><div class="dish-owner-label">Seja o primeiro</div></div>`;
                 }
-
                 return `
                     <div class="dish-card">
                         <div class="dish-top">
                             <div class="dish-emoji-big">${d.emoji}</div>
-                            <div class="dish-status-badge ${ready ? 'ready' : 'needed'}">
-                                ${ready ? '✓ Ok' : '⚠ Precisa'}
-                            </div>
+                            <div class="dish-status-badge ${ready ? 'ready' : 'needed'}">${ready ? '✓ Ok' : '⚠ Precisa'}</div>
                         </div>
                         <div class="dish-title">${d.name}</div>
                         <div class="dish-desc">${d.desc}</div>
@@ -3239,37 +3171,24 @@
             }).join('');
         }
 
-        // ===== RENDER INGREDIENTS =====
         function renderIngredients() {
             const grid = document.getElementById('ingredientsGrid');
             const takenDishes = new Set();
             guests.forEach(g => g.dishes.forEach(d => takenDishes.add(d)));
-
             const ingredientsMap = new Map();
             DISHES.forEach(d => {
-                const ings = INGREDIENTS_MAP[d.id] || [];
-                ings.forEach(i => {
+                (INGREDIENTS_MAP[d.id] || []).forEach(i => {
                     const key = `${i.n}_${i.q}`;
-                    if (!ingredientsMap.has(key)) {
-                        ingredientsMap.set(key, { ...i, key, dishIds: [] });
-                    }
+                    if (!ingredientsMap.has(key)) ingredientsMap.set(key, { ...i, key, dishIds: [] });
                     ingredientsMap.get(key).dishIds.push(d.id);
                 });
             });
-
             const ingredients = Array.from(ingredientsMap.values());
             const savedChecked = window.__checkedIngredients || [];
-
-            // Calcular quantos já temos (baseado em pratos confirmados)
             let readyCount = 0;
-            ingredients.forEach(ing => {
-                const isCovered = ing.dishIds.some(did => takenDishes.has(did));
-                if (isCovered) readyCount++;
-            });
-
+            ingredients.forEach(ing => { if (ing.dishIds.some(did => takenDishes.has(did))) readyCount++; });
             document.getElementById('ingHave').textContent = readyCount;
             document.getElementById('ingMissing').textContent = ingredients.length - readyCount;
-
             grid.innerHTML = ingredients.map(ing => {
                 const isCovered = ing.dishIds.some(did => takenDishes.has(did));
                 const isChecked = savedChecked.includes(ing.key);
@@ -3286,12 +3205,8 @@
             }).join('');
         }
 
-        function toggleIng(el) {
-            el.classList.toggle('done');
-            saveChecked();
-        }
+        function toggleIng(el) { el.classList.toggle('done'); saveChecked(); }
 
-        // ===== UPDATE KPIS =====
         function updateKPIs() {
             const confirmed = guests.length;
             const totalPeople = guests.reduce((s, g) => s + 1 + g.companions, 0);
@@ -3300,38 +3215,24 @@
             const ready = takenDishes.size;
             const missing = DISHES.length - ready;
             const progress = Math.round((ready / DISHES.length) * 100);
-
-            // KPIs dashboard
             document.getElementById('kpiConfirmed').textContent = confirmed;
             document.getElementById('kpiPeople').textContent = totalPeople;
             document.getElementById('kpiReady').textContent = ready;
             document.getElementById('kpiMissing').textContent = missing;
-
-            // Tab counts
             document.getElementById('tabCountGuests').textContent = confirmed;
             document.getElementById('tabCountDishes').textContent = DISHES.length;
             document.getElementById('tabCountIngredients').textContent = missing;
-
-            // Hero stats
             document.getElementById('heroStat1').textContent = confirmed;
             document.getElementById('heroStat2').textContent = totalPeople;
             document.getElementById('heroStat3').textContent = ready;
-
-            // Progress bar hero
             document.getElementById('heroProgressBar').style.width = progress + '%';
             document.getElementById('heroProgressText').textContent = `${ready} de ${DISHES.length}`;
             document.getElementById('heroProgressPct').textContent = progress + '%';
-
-            // Floating badges
             document.getElementById('floatBadge1').textContent = confirmed;
             document.getElementById('floatBadge2').textContent = missing;
-
-            // Admin KPIs
             document.getElementById('adminKpi1').textContent = confirmed;
             document.getElementById('adminKpi2').textContent = totalPeople;
             document.getElementById('adminKpi3').textContent = missing;
-
-            // Animate numbers
             [1, 2, 3].forEach(i => {
                 const el = document.getElementById('heroStat' + i);
                 el.style.transform = 'scale(1.15)';
@@ -3339,25 +3240,11 @@
             });
         }
 
-        // ===== RENDER ALL =====
-        function renderAll() {
-            renderPicker();
-            renderGuests();
-            renderDishes();
-            renderIngredients();
-            renderAdmin();
-            updateKPIs();
-        }
+        function renderAll() { renderPicker(); renderGuests(); renderDishes(); renderIngredients(); renderAdminList(); updateKPIs(); }
 
-        // ===== SUBMIT RSVP =====
         function submitRSVP(e) {
             e.preventDefault();
-
-            if (selectedDishes.size === 0) {
-                toast('Escolha pelo menos 1 item para trazer!', 'error');
-                return;
-            }
-
+            if (selectedDishes.size === 0) { toast('Escolha pelo menos 1 item!', 'error'); return; }
             const data = {
                 id: Date.now(),
                 name: document.getElementById('fName').value.trim(),
@@ -3369,34 +3256,25 @@
                 date: new Date().toLocaleString('pt-BR'),
                 ts: Date.now()
             };
-
             const dup = guests.find(g => g.phone.replace(/\D/g,'') === data.phone.replace(/\D/g,''));
-            if (dup) {
-                if (!confirm('Já existe uma confirmação com este telefone. Substituir?')) return;
-                guests = guests.filter(g => g.id !== dup.id);
-            }
-
+            if (dup) { if (!confirm('Já existe uma confirmação com este telefone. Substituir?')) return; guests = guests.filter(g => g.id !== dup.id); }
             guests.push(data);
             save();
             lastGuest = data;
-
             renderAll();
             showSuccess();
             createConfetti();
-
-            // Reset
             document.getElementById('rsvpForm').reset();
             selectedDishes.clear();
             document.querySelectorAll('.dish-pick.selected').forEach(el => el.classList.remove('selected'));
         }
 
-        // ===== ADMIN =====
         function toggleAdmin() {
             const p = document.getElementById('adminPanel');
             const o = document.getElementById('overlay');
             p.classList.toggle('open');
             o.classList.toggle('active');
-            if (p.classList.contains('open')) renderAdmin();
+            if (p.classList.contains('open')) renderAdminList();
         }
 
         function closeAll() {
@@ -3405,33 +3283,18 @@
             document.getElementById('overlay').classList.remove('active');
         }
 
-        function renderAdmin() {
+        function renderAdminList() {
             const list = document.getElementById('adminList');
             const search = document.getElementById('adminSearch').value.toLowerCase();
-
             let filtered = guests;
-            if (search) {
-                filtered = guests.filter(g => g.name.toLowerCase().includes(search) || g.phone.includes(search));
-            }
-
+            if (search) filtered = guests.filter(g => g.name.toLowerCase().includes(search) || g.phone.includes(search));
             filtered = [...filtered].sort((a, b) => b.ts - a.ts);
-
             if (filtered.length === 0) {
-                list.innerHTML = `
-                    <div class="empty-state">
-                        <span class="empty-emoji">${search ? '🔍' : '📭'}</span>
-                        <p>${search ? 'Nada encontrado' : 'Nenhuma confirmação ainda'}</p>
-                    </div>
-                `;
+                list.innerHTML = `<div class="empty-state"><span class="empty-emoji">${search ? '🔍' : '📭'}</span><p>${search ? 'Nada encontrado' : 'Nenhuma confirmação ainda'}</p></div>`;
                 return;
             }
-
             list.innerHTML = filtered.map(g => {
-                const dishes = g.dishes.map(id => {
-                    const d = DISHES.find(x => x.id === id);
-                    return d ? `${d.emoji} ${d.name}` : '';
-                }).filter(Boolean).join(', ');
-
+                const dishes = g.dishes.map(id => { const d = DISHES.find(x => x.id === id); return d ? `${d.emoji} ${d.name}` : ''; }).filter(Boolean).join(', ');
                 return `
                     <div class="admin-guest-v2">
                         <div class="admin-guest-top">
@@ -3456,181 +3319,98 @@
         function delGuest(id) {
             if (!confirm('Remover esta confirmação?')) return;
             guests = guests.filter(g => g.id !== id);
-            save();
-            renderAll();
+            save(); renderAll();
             toast('Removido!', 'success');
         }
 
         function clearAll() {
             if (guests.length === 0) { toast('Nada para limpar', 'error'); return; }
             if (!confirm(`Remover TODAS as ${guests.length} confirmações?`)) return;
-            guests = [];
-            save();
-            renderAll();
+            guests = []; save(); renderAll();
             toast('Tudo limpo!', 'success');
         }
 
-        // ===== SEND WHATSAPP =====
         function sendGuestWpp(id) {
             const g = guests.find(x => x.id === id);
             if (!g) return;
-
             const phone = g.phone.replace(/\D/g,'');
             const full = phone.length <= 11 ? '55' + phone : phone;
-            const dishes = g.dishes.map(dId => {
-                const d = DISHES.find(x => x.id === dId);
-                return d ? `${d.emoji} ${d.name}` : '';
-            }).filter(Boolean).join('\n• ');
-
+            const dishes = g.dishes.map(dId => { const d = DISHES.find(x => x.id === dId); return d ? `${d.emoji} ${d.name}` : ''; }).filter(Boolean).join('\n• ');
             const msg = `Olá ${g.name.split(' ')[0]}! 🎉\n\nPassando pra confirmar o *${EVENT.name}*:\n\n📅 15/12 às 12h\n📍 Casa do João\n\n*Você vai trazer:*\n• ${dishes}\n\n${g.companions > 0 ? `👥 ${1 + g.companions} pessoas\n` : ''}Qualquer coisa me avisa! ✨`;
-
             window.open(`https://wa.me/${full}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         function sendWhatsApp() {
             if (!lastGuest) return;
             const g = lastGuest;
-            const dishes = g.dishes.map(id => {
-                const d = DISHES.find(x => x.id === id);
-                return d ? `${d.emoji} *${d.name}*` : '';
-            }).filter(Boolean).join('\n• ');
-
-            const msg = `🎉 *NOVA CONFIRMAÇÃO* 🎉\n\n` +
-                `*Evento:* ${EVENT.name}\n` +
-                `*Data:* 15/12/2025 às 12h\n\n` +
-                `👤 *Nome:* ${g.name}\n` +
-                `📱 *Telefone:* ${g.phone}\n` +
-                `👥 *Acompanhantes:* ${g.companions}\n` +
-                `🍽️ *Restrição:* ${g.restriction}\n\n` +
-                `*Vai trazer:*\n• ${dishes}\n\n` +
-                `${g.notes ? `💬 *Obs:* ${g.notes}\n\n` : ''}` +
-                `Confirmado em: ${g.date}`;
-
+            const dishes = g.dishes.map(id => { const d = DISHES.find(x => x.id === id); return d ? `${d.emoji} *${d.name}*` : ''; }).filter(Boolean).join('\n• ');
+            const msg = `🎉 *NOVA CONFIRMAÇÃO* 🎉\n\n*Evento:* ${EVENT.name}\n*Data:* 15/12/2025 às 12h\n\n👤 *Nome:* ${g.name}\n📱 *Telefone:* ${g.phone}\n👥 *Acompanhantes:* ${g.companions}\n🍽️ *Restrição:* ${g.restriction}\n\n*Vai trazer:*\n• ${dishes}\n\n${g.notes ? `💬 *Obs:* ${g.notes}\n\n` : ''}Confirmado em: ${g.date}`;
             window.open(`https://wa.me/${EVENT.whatsappHost}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // ===== SHARE =====
         function shareEvent() {
             const text = `🎉 *${EVENT.name}* 🎉\n\n📅 15/12/2025 às 12h\n📍 Casa do João\n\nConfirme e escolha o que vai trazer:\n${window.location.href}`;
-            if (navigator.share) {
-                navigator.share({ title: EVENT.name, text, url: window.location.href }).catch(()=>{});
-            } else {
-                navigator.clipboard.writeText(text).then(() => toast('Link copiado! Cole no WhatsApp', 'success'));
-            }
+            if (navigator.share) navigator.share({ title: EVENT.name, text, url: window.location.href }).catch(()=>{});
+            else navigator.clipboard.writeText(text).then(() => toast('Link copiado!', 'success'));
         }
 
-        // ===== EXPORT EXCEL =====
         function exportExcel() {
             if (guests.length === 0) { toast('Nada para exportar', 'error'); return; }
-
             let csv = '\uFEFF';
             csv += `${EVENT.name};Data: 15/12/2025;Horário: 12h;Local: Casa do João\n`;
             csv += `Relatório gerado em;${new Date().toLocaleString('pt-BR')}\n\n`;
-
             const total = guests.reduce((s, g) => s + 1 + g.companions, 0);
             const takenD = new Set();
             guests.forEach(g => g.dishes.forEach(d => takenD.add(d)));
-
-            csv += `RESUMO GERAL\n`;
-            csv += `Total de confirmações;${guests.length}\n`;
-            csv += `Total de pessoas;${total}\n`;
-            csv += `Itens confirmados;${takenD.size}/${DISHES.length}\n`;
-            csv += `Itens faltando;${DISHES.length - takenD.size}\n\n`;
-
-            csv += `LISTA DE CONVIDADOS\n`;
-            csv += `Nome;Telefone;Acompanhantes;Total Pessoas;Restrição;Vai Trazer;Observações;Data\n`;
-
+            csv += `RESUMO GERAL\nTotal de confirmações;${guests.length}\nTotal de pessoas;${total}\nItens confirmados;${takenD.size}/${DISHES.length}\nItens faltando;${DISHES.length - takenD.size}\n\n`;
+            csv += `LISTA DE CONVIDADOS\nNome;Telefone;Acompanhantes;Total Pessoas;Restrição;Vai Trazer;Observações;Data\n`;
             guests.forEach(g => {
                 const dishNames = g.dishes.map(id => DISHES.find(x => x.id === id)?.name || '').join(' + ');
-                csv += [
-                    `"${g.name}"`,
-                    `"${g.phone}"`,
-                    g.companions,
-                    1 + g.companions,
-                    `"${g.restriction}"`,
-                    `"${dishNames}"`,
-                    `"${g.notes.replace(/"/g, '""')}"`,
-                    `"${g.date}"`
-                ].join(';') + '\n';
+                csv += [`"${g.name}"`,`"${g.phone}"`,g.companions,1 + g.companions,`"${g.restriction}"`,`"${dishNames}"`,`"${g.notes.replace(/"/g, '""')}"`,`"${g.date}"`].join(';') + '\n';
             });
-
-            csv += `\n\nCARDÁPIO - QUEM TRAZ O QUÊ\n`;
-            csv += `Prato;Responsável;Telefone\n`;
+            csv += `\n\nCARDÁPIO - QUEM TRAZ O QUÊ\nPrato;Responsável;Telefone\n`;
             DISHES.forEach(d => {
                 const o = guests.find(g => g.dishes.includes(d.id));
                 csv += `"${d.name}";"${o ? o.name : 'A DEFINIR'}";"${o ? o.phone : '-'}"\n`;
             });
-
-            csv += `\n\nLISTA DE COMPRAS\n`;
-            csv += `Ingrediente;Quantidade;Categoria;Status\n`;
+            csv += `\n\nLISTA DE COMPRAS\nIngrediente;Quantidade;Categoria;Status\n`;
             const ingMap = new Map();
-            DISHES.forEach(d => {
-                (INGREDIENTS_MAP[d.id] || []).forEach(i => {
-                    const k = `${i.n}_${i.q}`;
-                    if (!ingMap.has(k)) ingMap.set(k, i);
-                });
-            });
+            DISHES.forEach(d => { (INGREDIENTS_MAP[d.id] || []).forEach(i => { const k = `${i.n}_${i.q}`; if (!ingMap.has(k)) ingMap.set(k, i); }); });
             ingMap.forEach(i => {
                 const covered = Array.from(takenD).some(dId => (INGREDIENTS_MAP[dId] || []).some(x => x.n === i.n));
                 csv += `"${i.n}";"${i.q}";"${i.c}";"${covered ? 'COBERTO' : 'PENDENTE'}"\n`;
             });
-
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             const now = new Date();
             a.download = `relatorio_${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}.csv`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
             toast('📊 Excel exportado!', 'success');
         }
 
-        // ===== EXPORT SUMMARY =====
         function exportSummary() {
             if (guests.length === 0) { toast('Nada para exportar', 'error'); return; }
-
             const total = guests.reduce((s, g) => s + 1 + g.companions, 0);
             const takenD = new Set();
             guests.forEach(g => g.dishes.forEach(d => takenD.add(d)));
-
-            let txt = `📋 RESUMO — ${EVENT.name}\n`;
-            txt += `${'='.repeat(40)}\n\n`;
-            txt += `📅 Data: 15/12/2025 às 12h\n📍 Local: Casa do João\n\n`;
-            txt += `${'='.repeat(40)}\n`;
-            txt += `📊 ESTATÍSTICAS\n`;
-            txt += `${'='.repeat(40)}\n`;
-            txt += `👥 Confirmações: ${guests.length}\n`;
-            txt += `🎂 Total de pessoas: ${total}\n`;
-            txt += `✅ Itens garantidos: ${takenD.size}/${DISHES.length}\n`;
-            txt += `⚠️ Itens faltando: ${DISHES.length - takenD.size}\n\n`;
-
-            txt += `${'='.repeat(40)}\n👥 CONVIDADOS\n${'='.repeat(40)}\n\n`;
+            let txt = `📋 RESUMO — ${EVENT.name}\n${'='.repeat(40)}\n\n📅 Data: 15/12/2025 às 12h\n📍 Local: Casa do João\n\n${'='.repeat(40)}\n📊 ESTATÍSTICAS\n${'='.repeat(40)}\n👥 Confirmações: ${guests.length}\n🎂 Total de pessoas: ${total}\n✅ Itens garantidos: ${takenD.size}/${DISHES.length}\n⚠️ Itens faltando: ${DISHES.length - takenD.size}\n\n${'='.repeat(40)}\n👥 CONVIDADOS\n${'='.repeat(40)}\n\n`;
             guests.forEach((g, i) => {
                 const dishes = g.dishes.map(id => DISHES.find(x => x.id === id)?.name || '').join(', ');
-                txt += `${i+1}. ${g.name}\n`;
-                txt += `   📱 ${g.phone}\n`;
-                txt += `   👥 ${1 + g.companions} pessoa(s)\n`;
+                txt += `${i+1}. ${g.name}\n   📱 ${g.phone}\n   👥 ${1 + g.companions} pessoa(s)\n`;
                 if (g.restriction !== 'Nenhuma') txt += `   🍽️ ${g.restriction}\n`;
                 txt += `   🎁 ${dishes}\n\n`;
             });
-
             txt += `${'='.repeat(40)}\n⚠️ ITENS FALTANDO\n${'='.repeat(40)}\n\n`;
-            DISHES.forEach(d => {
-                if (!takenD.has(d.id)) txt += `❌ ${d.emoji} ${d.name}\n`;
-            });
-
+            DISHES.forEach(d => { if (!takenD.has(d.id)) txt += `❌ ${d.emoji} ${d.name}\n`; });
             const blob = new Blob([txt], { type: 'text/plain;charset=utf-8;' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = `resumo_evento.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
             toast('📄 Resumo baixado!', 'success');
         }
 
-        // ===== TOAST =====
         function toast(msg, type = 'success') {
             const el = document.getElementById('toast');
             const icon = document.getElementById('toastIcon');
@@ -3643,7 +3423,6 @@
             el._t = setTimeout(() => el.classList.remove('show'), 3200);
         }
 
-        // ===== SUCCESS MODAL =====
         function showSuccess() {
             document.getElementById('successModal').classList.add('open');
             document.getElementById('overlay').classList.add('active');
@@ -3654,9 +3433,8 @@
             document.getElementById('overlay').classList.remove('active');
         }
 
-        // ===== CONFETTI =====
         function createConfetti() {
-            const colors = ['#ff5e3a', '#ffd93d', '#00f5a0', '#7b61ff', '#ff2e88'];
+            const colors = ['#ff5e3a', '#ffb800', '#00c987', '#7b61ff', '#ff2e88'];
             const emojis = ['🎉','✨','🎊','⭐','💫','🔥'];
             for (let i = 0; i < 60; i++) {
                 const c = document.createElement('div');
@@ -3679,17 +3457,12 @@
             }
         }
 
-        // ===== NAVBAR SCROLL =====
         window.addEventListener('scroll', () => {
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
         });
 
-        // ===== ESC =====
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeAll();
-        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
 
-        // ===== INIT =====
         function init() {
             load();
             initCursor();
